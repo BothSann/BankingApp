@@ -24,7 +24,7 @@ class Program
         if (userName == "admin" && password == "123@")
         {
             Console.Clear();
-            Console.WriteLine("Logged in successfully! \n");
+            Console.WriteLine("Logged in successfully!\n");
 
             // Variables to store menu choice
             int mainMenuChoice = -1;
@@ -44,14 +44,17 @@ class Program
                 // Accepting user choice
                 Console.Write("Enter choice (0-5): ");
                 mainMenuChoice = int.Parse(Console.ReadLine());
+                Console.WriteLine("");
 
 
                 // Swtich-case to check menu choice 
                 switch (mainMenuChoice)
                 {
                     case 1:
+                        CustomersMenu();
                         break;
                     case 2:
+                        AccountsMenu();
                         break;
                     case 3:
                         break;
@@ -70,8 +73,70 @@ class Program
             Console.WriteLine("Invalid username or password!");
         }
 
-        Console.WriteLine("Thank you! Come back again.");
+
+        // Exiting app
+        Console.WriteLine("\nThank you! Come back again.");
+;   }
+
+    // Methods
+
+    static void CustomersMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("You're in Customers Menu\n");
+        // Variables to store customers menu choice
+        int customersMenuChoice = -1;
+
+        // Do-while loop
+        do
+        {
+            // Show customer menu
+            Console.WriteLine("======== Customers Menu ========");
+            Console.WriteLine("1. Add Customer");
+            Console.WriteLine("2. Delete Customer");
+            Console.WriteLine("3. Update Customer");
+            Console.WriteLine("4. View Customers");
+            Console.WriteLine("0. Back to Main Menu\n");
 
 
-;    }
+
+            // Accepting customers menu choice
+            Console.Write("Enter choice (0-4): ");
+            customersMenuChoice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("");
+        
+                
+        }
+        while (customersMenuChoice != 0);
+
+    }
+
+    static void AccountsMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("You're in Accounts Menu\n");
+        // Variable to store accounts menu choice
+        int accountsMenuChoice = -1;
+
+        do
+        {
+            // Show accounts menu
+            Console.WriteLine("======== Accounts Menu ========");
+            Console.WriteLine("1. Add Account");
+            Console.WriteLine("2. Delete Account");
+            Console.WriteLine("3. Update Account");
+            Console.WriteLine("4. View Accounts");
+            Console.WriteLine("0. Back to Main Menu\n");
+
+            // Accept accounts menu choice 
+            Console.Write("Enter choice (0-4): ");
+            accountsMenuChoice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("");
+
+        } while (accountsMenuChoice != 0);
+    } 
+
+
+
+
 } 
