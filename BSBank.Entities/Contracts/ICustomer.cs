@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace BSBank.Entities
+namespace BSBank.Entities.Contracts 
 {
     public interface ICustomer
     {
@@ -12,7 +12,7 @@ namespace BSBank.Entities
         string Landmark { get; set; }
         string City { get; set; }   
         string Country { get; set; }    
-        string Phone { get; set; }
+        string Mobile { get; set; }
 
     }
 }
