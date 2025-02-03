@@ -112,7 +112,7 @@ class Program
     }
 
     static void AccountsMenu()
-    {
+    {   
         Console.Clear();
         Console.WriteLine("You're in Accounts Menu\n");
         // Variable to store accounts menu choice
@@ -135,8 +135,4 @@ class Program
 
         } while (accountsMenuChoice != 0);
     } 
-
-
-
-
 } 
