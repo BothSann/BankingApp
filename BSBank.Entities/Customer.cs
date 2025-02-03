@@ -1,5 +1,6 @@
 ﻿using System;
 using BSBank.Entities.Contracts;
+using BSBank.Exceptions;
 
 namespace BSBank.Entities
 {
@@ -28,12 +29,40 @@ namespace BSBank.Entities
         /// <summary>
         /// Auto-generated code number of the customer
         /// </summary>
-        public long CustomerCode { get => _customerCode; set => _customerCode = value; }
+        public long CustomerCode 
+        { 
+            get => _customerCode;
+            set
+            {
+                if (value > 0)
+                {
+                    _customerCode = value;
+                }
+                else
+                {
+                    throw new CustomerException("Customer code should be greater than 0");
+                }
+            }
+        }
 
         /// <summary>
         /// Name of the customer
         /// </summary>
-        public string CustomerName { get => _customerName; set => _customerName = value; }
+        public string CustomerName 
+        { 
+            get => _customerName; 
+            set
+            {
+                if (value.Length <= 40 && string.IsNullOrEmpty(value))
+                {
+                    _customerName = value;
+                }
+                else
+                {
+                    throw new CustomerException("Customer name should be less than 40 characters and should not be empty");
+                }
+            }
+        }
 
         /// <summary>
         /// Address of the customer
@@ -58,7 +87,21 @@ namespace BSBank.Entities
         /// <summary>
         /// 10-digits Phone number of the customer
         /// </summary>
-        public string Mobile { get => _mobile; set => _mobile = value; }
+        public string Mobile 
+        { 
+            get => _mobile; 
+            set
+            {
+                if (value.Length.Equals(10)) 
+                {
+                    _mobile = value;
+                }
+                else
+                {
+                    throw new CustomerException("Mobile number should be 10 digits");
+                }
+            }
+        }
         #endregion
     }
 }
