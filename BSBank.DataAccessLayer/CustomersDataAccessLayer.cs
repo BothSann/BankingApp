@@ -54,10 +54,10 @@ namespace BSBank.DataAccessLayer
             List<Customer> customersList = new List<Customer>();
 
             // Filer the collection 
-            List<Customer> fitleredCustomers = customersList.FindAll(condition);
+            List<Customer> fitleredCustomers = Customers.FindAll(condition);
 
             // Copy all customers from source collection into newCustomers list
-            Customers.ForEach(item => fitleredCustomers.Add(item.Clone() as Customer));
+            fitleredCustomers.ForEach(item => customersList.Add(item.Clone() as Customer));
 
             return customersList;
         }
