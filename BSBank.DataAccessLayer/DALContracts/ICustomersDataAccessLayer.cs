@@ -8,6 +8,7 @@ namespace BSBank.DataAccessLayer.DALContracts
     /// <summary>
     /// Interface that represents the data access layer for customers
     /// </summary>
+
     public interface ICustomersDataAccessLayer
     {
         /// <summary>

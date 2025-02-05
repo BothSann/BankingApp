@@ -51,16 +51,16 @@ namespace BSBank.Entities
         public string CustomerName 
         { 
             get => _customerName; 
-            set
+            set 
             {
-                if (value.Length <= 40 && string.IsNullOrEmpty(value))
+                if (value.Length <= 40 && string.IsNullOrEmpty(value).Equals(false))
                 {
                     _customerName = value;
                 }
                 else
                 {
                     throw new CustomerException("Customer name should be less than 40 characters and should not be empty");
-                }
+                } 
             }
         }
 
@@ -87,7 +87,7 @@ namespace BSBank.Entities
         /// <summary>
         /// 10-digits Phone number of the customer
         /// </summary>
-        public string Mobile 
+        public string Mobile    
         { 
             get => _mobile; 
             set

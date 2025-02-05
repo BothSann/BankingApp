@@ -11,7 +11,7 @@ namespace BSBank.Exceptions
         /// Constructor that initializes exception message
         /// </summary>
         /// <param name="message">Exception message</param>
-        public CustomerException(string message):base(message)
+        public CustomerException(string message) : base(message)
         {
              
         }
