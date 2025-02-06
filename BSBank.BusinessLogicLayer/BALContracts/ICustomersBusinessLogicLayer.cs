@@ -1,20 +1,16 @@
 ﻿using System;
-using BSBank.Entities;
 using System.Collections.Generic;
+using BSBank.Entities;
 
 
-namespace BSBank.DataAccessLayer.DALContracts
+namespace BSBank.BusinessLogicLayer.BALContracts
 {
-    /// <summary>
-    /// Interface that represents the data access layer for customers
-    /// </summary>
-
-    public interface ICustomersDataAccessLayer
-    {   
+    public interface ICustomersBusinessLogicLayer
+    {
         /// <summary>
         /// Return all existing customers
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of customers</returns>
         List<Customer> GetCustomers();
 
         /// <summary>
