@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankingApp;
+using System;
 
 class Program
 {
@@ -24,7 +25,7 @@ class Program
         if (userName == "admin" && password == "123@")
         {
             Console.Clear();
-            Console.WriteLine("Logged in successfully!\n");
+            Console.WriteLine("Logged in successfully!\n"); 
 
             // Variables to store menu choice
             int mainMenuChoice = -1;
@@ -91,21 +92,40 @@ class Program
         do
         {
             // Show customer menu
-            Console.WriteLine("======== Customers Menu ========");
+            Console.WriteLine("\n======== Customers Menu ========");
             Console.WriteLine("1. Add Customer");
             Console.WriteLine("2. Delete Customer");
             Console.WriteLine("3. Update Customer");
-            Console.WriteLine("4. View Customers");
+            Console.WriteLine("4. Search Customer");
+            Console.WriteLine("5. View Customers");
             Console.WriteLine("0. Back to Main Menu\n");
 
-
-
             // Accepting customers menu choice
-            Console.Write("Enter choice (0-4): ");
+            Console.Write("Enter choice (0-5): ");
             customersMenuChoice = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("");
-        
-                
+
+            // Switch-case to check menu choice
+            switch (customersMenuChoice)
+            {
+                case 1:
+                    CustomersPresentation.AddCustomer();
+                    break;
+                case 2:
+                    Console.WriteLine("Delete Customer");
+                    break;
+                case 3:
+                    Console.WriteLine("Update Customer");
+                    break;
+                case 4:
+                    Console.WriteLine("Search Customer");
+                    break;
+                case 5:
+                    CustomersPresentation.ViewCustomers();
+                    break;
+                case 0:
+                    break;
+            }
         }
         while (customersMenuChoice != 0);
 
