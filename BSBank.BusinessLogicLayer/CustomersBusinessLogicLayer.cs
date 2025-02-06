@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using BSBank.BusinessLogicLayer.BALContracts;
+using BSBank.Configuration;
 using BSBank.DataAccessLayer;
 using BSBank.DataAccessLayer.DALContracts;
 using BSBank.Entities;
 using BSBank.Exceptions;
+
 
 
 namespace BSBank.BusinessLogicLayer
@@ -82,6 +84,27 @@ namespace BSBank.BusinessLogicLayer
         {
             try
             {
+                // Get all existing customers
+                List<Customer> allCustomers = CustomersDataAccessLayer.GetCustomers();
+                long maxCustomerNo = 0;
+                foreach (var item in allCustomers)
+                {
+                    if(item.CustomerCode > maxCustomerNo)
+                    {
+                        maxCustomerNo = item.CustomerCode;
+                    }
+                }
+
+                // Generate a new customer code
+                if(allCustomers.Count >= 1)
+                {
+                    customer.CustomerCode = maxCustomerNo + 1;
+                } 
+                else
+                {
+                    customer.CustomerCode = Settings.BaseCustomerNo + 1;
+                }
+
                 return CustomersDataAccessLayer.AddCustomer(customer);
             }
             catch (CustomerException)
