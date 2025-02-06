@@ -12,11 +12,11 @@ namespace BSBank.DataAccessLayer
     public class CustomersDataAccessLayer : ICustomersDataAccessLayer
     {
         #region Private Fields
-        private List<Customer> _customers;
+        private static List<Customer> _customers;
         #endregion
 
         #region Constructor
-        public CustomersDataAccessLayer()
+        static CustomersDataAccessLayer()
         {
             _customers = new List<Customer>();
         }
@@ -26,7 +26,7 @@ namespace BSBank.DataAccessLayer
         /// <summary>
         /// Represents source customers collection
         /// </summary>
-        private List<Customer> Customers
+        private static List<Customer> Customers
         {
             set => _customers = value;
             get => _customers;
