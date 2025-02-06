@@ -92,13 +92,13 @@ namespace BSBank.Entities
             get => _mobile; 
             set
             {
-                if (value.Length.Equals(10)) 
+                if (value.Length <= 16) 
                 {
                     _mobile = value;
                 }
                 else
                 {
-                    throw new CustomerException("Mobile number should be 10 digits");
+                    throw new CustomerException("Mobile number should be less than 16 characters");
                 }
             }
         }
