@@ -4,6 +4,7 @@ using BSBank.Entities;
 using BSBank.Exceptions;
 using BSBank.BusinessLogicLayer;
 using BSBank.BusinessLogicLayer.BALContracts;
+using System.Linq;
 
 namespace BankingApp
 {
@@ -45,6 +46,62 @@ namespace BankingApp
                 else
                 {
                     Console.WriteLine("Customer not added");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.GetType());
+            }
+        }
+
+        internal static void UpdateCustomer ()
+        {
+            try
+            {
+                // Create BL object 
+                ICustomersBusinessLogicLayer customersBusinessLayer = new CustomersBusinessLogicLayer();
+
+                if(customersBusinessLayer.GetCustomers().Count <= 0)
+                {
+                    Console.WriteLine("No Customers Exist");
+                    return;
+                }
+
+                Console.WriteLine("======== UPDATE CUSTOMER ========");
+                long customerCodeToEdit;
+                while (!long.TryParse(Console.ReadLine(), out customerCodeToEdit))
+                {
+
+                }
+                var existingCustomer = customersBusinessLayer.GetCustomersByCondition(item => item.CustomerCode.Equals(customerCodeToEdit)).FirstOrDefault();
+                if (existingCustomer.Equals(null))
+                {
+                    Console.WriteLine("Ivalid Customer Code!");
+                    return;
+                }
+                Console.WriteLine("NEW CUSTOMER DETAILS:");
+                Console.Write("Enter Customer Name: ");
+                existingCustomer.CustomerName = Console.ReadLine();
+                Console.Write("Enter Address: ");
+                existingCustomer.Address = Console.ReadLine();
+                Console.Write("Enter Landmark: ");
+                existingCustomer.Landmark = Console.ReadLine();
+                Console.Write("Enter City: ");
+                existingCustomer.City = Console.ReadLine();
+                Console.Write("Enter Country: ");
+                existingCustomer.Country = Console.ReadLine();
+                Console.Write("Enter Mobile: ");
+                existingCustomer.Mobile = Console.ReadLine();
+
+                bool isUpdated = customersBusinessLayer.UpdateCustomer(existingCustomer);
+                if (isUpdated)
+                {
+                    Console.WriteLine("Customer Updated Successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Customer not updated");
                 }
             }
             catch (Exception ex)
