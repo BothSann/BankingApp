@@ -94,7 +94,7 @@ namespace BankingApp
             }
         }
 
-        internal static void UpdateCustomer ()
+        internal static void UpdateCustomer()
         {
             try
             {
