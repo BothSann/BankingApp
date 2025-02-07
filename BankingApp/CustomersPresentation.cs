@@ -87,7 +87,7 @@ namespace BankingApp
                     Console.WriteLine("Customer not deleted");
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.GetType());
@@ -142,6 +142,47 @@ namespace BankingApp
                 {
                     Console.WriteLine("Customer not updated");
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.GetType());
+            }
+        }
+
+        internal static void SearchCustomer()
+        {
+            try
+            {
+                ICustomersBusinessLogicLayer customersBusinessLogicLayer = new CustomersBusinessLogicLayer();
+                if (customersBusinessLogicLayer.GetCustomers().Count <= 0)
+                {
+                    Console.WriteLine("No Customers Exist");
+                    return;
+                }
+
+                Console.WriteLine("======== SEARCH CUSTOMER ========");
+                ViewCustomers();
+
+                Console.WriteLine("Enter Customer Code to search: ");
+                long customerCodeToSearch;
+                while (!long.TryParse(Console.ReadLine(), out customerCodeToSearch))
+                {
+                }
+                var existingCustomer = customersBusinessLogicLayer.GetCustomersByCondition(item => item.CustomerCode.Equals(customerCodeToSearch)).FirstOrDefault();
+                if (existingCustomer.Equals(null))
+                {
+                    Console.WriteLine("Ivalid Customer Code!");
+                    return;
+                }
+
+                Console.WriteLine("Customer Code: " + existingCustomer.CustomerCode);
+                Console.WriteLine("Customer Name: " + existingCustomer.CustomerName);
+                Console.WriteLine("Customer Address: " + existingCustomer.Address);
+                Console.WriteLine("Customer Landmark: " + existingCustomer.Landmark);
+                Console.WriteLine("Customer City: " + existingCustomer.City);
+                Console.WriteLine("Customer Country: " + existingCustomer.Country);
+                Console.WriteLine("Customer Mobile: " + existingCustomer.Mobile);
             }
             catch (Exception ex)
             {
