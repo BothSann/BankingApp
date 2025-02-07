@@ -55,6 +55,45 @@ namespace BankingApp
             }
         }
 
+        internal static void DeleteCustomer()
+        {
+            try
+            {
+                // Create BL object
+                ICustomersBusinessLogicLayer customersBusinessLayer = new CustomersBusinessLogicLayer();
+                if (customersBusinessLayer.GetCustomers().Count <= 0)
+                {
+                    Console.WriteLine("No Customers Exist");
+                    return;
+                }
+                Console.WriteLine("======== DELETE CUSTOMER ========");
+                long customerCodeToDelete;
+                while (!long.TryParse(Console.ReadLine(), out customerCodeToDelete))
+                {
+                }
+                var existingCustomer = customersBusinessLayer.GetCustomersByCondition(item => item.CustomerCode.Equals(customerCodeToDelete)).FirstOrDefault();
+                if (existingCustomer.Equals(null))
+                {
+                    Console.WriteLine("Ivalid Customer Code!");
+                    return;
+                }
+                bool isDeleted = customersBusinessLayer.DeleteCustomer(existingCustomer.CustomerID);
+                if (isDeleted)
+                {
+                    Console.WriteLine("Customer Deleted Successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Customer not deleted");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.GetType());
+            }
+        }
+
         internal static void UpdateCustomer ()
         {
             try
