@@ -12,5 +12,10 @@ namespace BSBank.Configuration
         /// Customer number starts from 1001; Incremented by 1
         /// </summary>
         public static long BaseCustomerNo { get; set; } = 1000;
+
+        /// <summary>
+        /// ACcount number starts from 1001; Incremented by 1
+        /// </summary>
+        public static long BaseAccountNo { get; set; } = 1000;
     }
 }
