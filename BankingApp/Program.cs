@@ -120,6 +120,26 @@ class Program
             Output.ShowAccountMenu();
             // Accept accounts menu choice 
             accountsMenuChoice = Input.GetUserChoice();
+            switch (accountsMenuChoice)
+            {
+                case 1:
+                    AccountsPresentation.AddAccount();
+                    break;
+                case 2:
+                    AccountsPresentation.DeleteAccount();
+                    break;
+                case 3:
+                    AccountsPresentation.UpdateAccount();
+                    break;
+                case 4:
+                    AccountsPresentation.SearchAccount();
+                    break;
+                case 5:
+                    AccountsPresentation.ViewAccounts();
+                    break;
+                case 0:
+                    break;
+            }
 
         } while (accountsMenuChoice != 0);
     } 

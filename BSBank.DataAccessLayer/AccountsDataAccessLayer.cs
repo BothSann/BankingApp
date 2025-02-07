@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using BSBank.Entities;
 using BSBank.Exceptions;
+using BSBank.DataAccessLayer.DALContracts;
 
 namespace BSBank.DataAccessLayer
 {
-    public class AccountsDataAccessLayer
+    public class AccountsDataAccessLayer : IAccountsDataAccessLayer
     {
         #region Private Fields
         private static List<Account> _accounts;

@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomersDataAccessLayer.cs" />
+    <Compile Include="DALContracts\IAccountsDataAccessLayer.cs" />
     <Compile Include="DALContracts\ICustomersDataAccessLayer.cs" />
+    <Compile Include="AccountsDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
