@@ -5,9 +5,7 @@ class Program
 {
     static void Main ()
     {
-        Console.WriteLine("=========== Welcome to BS Bank ===========");
-        Console.WriteLine("=========== Login Page ===========\n");
-
+        Output.GetWelcomeMessage();
         string userName = null;
         string password = null;
             
@@ -32,18 +30,9 @@ class Program
             do
             {
                 // Show main menu
-                Console.WriteLine("======== Main Menu ========");
-                Console.WriteLine("1. Customers");
-                Console.WriteLine("2. Accounts");
-                Console.WriteLine("3. Funds Transfer");
-                Console.WriteLine("4. Funds Transfer Statement");
-                Console.WriteLine("5. Account Statement");
-                Console.WriteLine("0. Exit\n");
-
+                Output.ShowMainMenu();
                 // Accepting user choice
-                Console.Write("Enter choice (0-5): ");
-                mainMenuChoice = int.Parse(Console.ReadLine());
-                Console.WriteLine("");
+                mainMenuChoice = Input.GetUserChoice();
 
 
                 // Swtich-case to check menu choice 
@@ -71,8 +60,6 @@ class Program
         {
             Console.WriteLine("Invalid username or password!");
         }
-
-
         // Exiting app
         Console.WriteLine("\nThank you! Come back again.");
 ;   }
@@ -90,18 +77,9 @@ class Program
         do
         {
             // Show customer menu
-            Console.WriteLine("\n======== Customers Menu ========");
-            Console.WriteLine("1. Add Customer");
-            Console.WriteLine("2. Delete Customer");
-            Console.WriteLine("3. Update Customer");
-            Console.WriteLine("4. Search Customer");
-            Console.WriteLine("5. View Customers");
-            Console.WriteLine("0. Back to Main Menu\n");
-
+            Output.ShowCustomerMenu();
             // Accepting customers menu choice
-            Console.Write("Enter choice (0-5): ");
-            customersMenuChoice = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("");
+            customersMenuChoice = Input.GetUserChoice();
 
             // Switch-case to check menu choice
             switch (customersMenuChoice)
@@ -139,17 +117,9 @@ class Program
         do
         {
             // Show accounts menu
-            Console.WriteLine("======== Accounts Menu ========");
-            Console.WriteLine("1. Add Account");
-            Console.WriteLine("2. Delete Account");
-            Console.WriteLine("3. Update Account");
-            Console.WriteLine("4. View Accounts");
-            Console.WriteLine("0. Back to Main Menu\n");
-
+            Output.ShowAccountMenu();
             // Accept accounts menu choice 
-            Console.Write("Enter choice (0-4): ");
-            accountsMenuChoice = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("");
+            accountsMenuChoice = Input.GetUserChoice();
 
         } while (accountsMenuChoice != 0);
     } 
