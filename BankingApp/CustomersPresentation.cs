@@ -154,6 +154,7 @@ namespace BankingApp
         {
             try
             {
+                // Create BL object
                 ICustomersBusinessLogicLayer customersBusinessLogicLayer = new CustomersBusinessLogicLayer();
                 if (customersBusinessLogicLayer.GetCustomers().Count <= 0)
                 {
