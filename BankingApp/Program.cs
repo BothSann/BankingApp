@@ -5,8 +5,8 @@ class Program
 {
     static void Main ()
     {
-        Console.WriteLine("------------- BS Bank -------------\n");
-        Console.WriteLine("Login Page\n");
+        Console.WriteLine("=========== Welcome to BS Bank ===========");
+        Console.WriteLine("=========== Login Page ===========\n");
 
         string userName = null;
         string password = null;
@@ -15,22 +15,20 @@ class Program
         userName = Console.ReadLine();
 
         // Check if username is entered
-        if (userName != "")
+        if (!string.IsNullOrEmpty(userName))
         {
             Console.Write("Enter password: ");
             password = Console.ReadLine();
         }
 
         // Check username and password
-        if (userName == "admin" && password == "123@")
+        if (userName.Equals("admin") && password.Equals("123@"))
         {
             Console.Clear();
             Console.WriteLine("Logged in successfully!\n"); 
 
             // Variables to store menu choice
             int mainMenuChoice = -1;
-
-
             do
             {
                 // Show main menu
@@ -79,8 +77,8 @@ class Program
         Console.WriteLine("\nThank you! Come back again.");
 ;   }
 
-    // Methods
 
+    // Methods
     static void CustomersMenu()
     {
         Console.Clear();
@@ -112,13 +110,13 @@ class Program
                     CustomersPresentation.AddCustomer();
                     break;
                 case 2:
-                    Console.WriteLine("Delete Customer");
+                    CustomersPresentation.DeleteCustomer();
                     break;
                 case 3:
-                    Console.WriteLine("Update Customer");
+                    CustomersPresentation.UpdateCustomer();
                     break;
                 case 4:
-                    Console.WriteLine("Search Customer");
+                    CustomersPresentation.SearchCustomer();
                     break;
                 case 5:
                     CustomersPresentation.ViewCustomers();
